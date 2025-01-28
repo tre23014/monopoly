@@ -1,0 +1,72 @@
+import math
+
+def main():
+
+    # First asking if they have all the green properties because if they don't why continue?
+    
+    all = input("Do you own all of the green properties, Yes or No? ")
+    if all == "No":
+        print(f"You need all of the green proprties first!")
+        return all
+    
+    # If they want to only switch a hotel and houses then they don't need to be asked the other questions
+    
+    switching = input("Do you want to switch hotels and houses on your properties? Yes or No? ")
+    if switching == "Yes":
+        which_w_hotel = input("Which property has the Hotel? ")
+        which_w_houses = input("Which propery has the houses? ")
+        print(f"Switching {which_w_hotel}'s hotel with {which_w_houses}'s 4 houses!")
+    
+
+    # If they want to continue after switching than here is the place to continue
+    
+    upgrade_property = input("Would you like to upgrade a property? ")
+    if upgrade_property == "No":
+        print("Okay, you may coninture to play!")
+        return upgrade_property
+    
+    # We need to know what property they would like to upgrade.
+    
+    property = input("Which property would you like to upgrade? ")
+    
+    # We also need to know what is on the property
+    
+    num = int(input("What is on your property? 0: nothing, 1: one house, 5: 1 hotel: "))
+    if num >= 5:
+        print("You already have a hotel on this property and can't get another!")
+        return num
+    
+    # We need to know if there is enought houses in the bank to continue because if there isn't why continue?
+    
+    houses = int(input("How many houses are in the bank? "))
+    if houses == 0:
+        print(f"There are not enough houses in the bank.")
+        return houses
+    
+    # Same with the hotels, we need to know how many there is. 
+    
+    hotels = int(input("How many hotels are in the bank? "))
+    if hotels == 0:
+        print(f"There are not enough hotels in the bank")
+        return hotels
+
+    # How much is this all going to cost?
+    
+    cost = 200 * (5 - num)
+    
+    #Last but not least, is there enough money to buy the hotel!
+    
+    cash = input("How much money do you have? ")
+    cash = int(cash)  # Convert cash to integer
+
+    if cash < cost:
+        print(f"You don't have enough money to buy a hotel.")
+        return cash
+    
+    # Need to tell the user the out come. 
+    
+    print(f"To get a hotel it will cost ${cost}.")
+    print(f"Put 1 hotel on {property} and return {num} house(s) to the bank.")
+
+
+main()
